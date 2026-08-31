@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# La invitación usa meta robots noindex/noarchive en el HTML.
+# Se permite el acceso para que buscadores y previsualizadores sociales puedan leer esas directivas.
