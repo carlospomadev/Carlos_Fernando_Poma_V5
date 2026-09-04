@@ -1794,6 +1794,49 @@ body.cfp-v621-intro-lock {
 </style>
 <!-- CFP-CALENDAR-V1-CSS:END -->
 
+
+<!-- CFP-CALENDAR-V2-CENTER-FIX:START -->
+<style id="cfpCalendarV2CenterFix">
+.cfp-calendar-actions .cfp-calendar-top .btn{
+  min-width:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  line-height:1 !important;
+  overflow:visible !important;
+}
+@media (max-width:560px){
+  .cfp-calendar-actions .cfp-calendar-top{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:8px !important;
+    width:100% !important;
+  }
+  .cfp-calendar-actions .cfp-calendar-top .btn{
+    min-height:46px !important;
+    padding:8px 5px !important;
+    font-size:clamp(.50rem,2.15vw,.64rem) !important;
+    font-weight:900 !important;
+    letter-spacing:-.015em !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    text-align:center !important;
+    justify-content:center !important;
+    align-items:center !important;
+  }
+}
+@media (max-width:340px){
+  .cfp-calendar-actions .cfp-calendar-top{
+    grid-template-columns:1fr !important;
+  }
+  .cfp-calendar-actions .cfp-calendar-top .btn{
+    font-size:.66rem !important;
+  }
+}
+</style>
+<!-- CFP-CALENDAR-V2-CENTER-FIX:END -->
+
 </head>
 <body class="gate-open">
   <div class="entry-gate" id="entryGate" role="dialog" aria-modal="true" aria-label="Entrar a la invitación">
