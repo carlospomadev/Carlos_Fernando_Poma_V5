@@ -1857,20 +1857,37 @@ body.cfp-v8-video-lock .sound-toggle{opacity:0!important;pointer-events:none!imp
 @media(min-aspect-ratio:3/2){.cfp-v8-video-intro video{max-width:min(56.25vh,100vw);left:50%;right:auto;transform:translateX(-50%)}}
 </style>
 <!-- CFP-V8V-CSS:END -->
-<meta name="cinematic-mobile-fix-version" content="8.3-left">
-<!-- CFP-V83-FIX-CSS:START -->
-<style id="cfpV83MobileFixStyles">
-/* V8.3: corrige el desplazamiento horizontal observado en móviles reales. */
+<meta name="cinematic-mobile-fix-version" content="8.6-visual-viewport">
+<meta name="cinematic-controls-version" content="8.6-floating-audio">
+<meta name="cinematic-fullscreen-version" content="8.6-replay-fullscreen">
+<meta name="cinematic-audio-isolation-version" content="8.6-hard-mute">
+<!-- CFP-V86-MOBILE-CSS:START -->
+<style id="cfpV86MobileStyles">
+/* V8.6: viewport visual real, pantalla completa y controles móviles estables. */
+html.cfp-v8-cinema-open,
+body.cfp-v8-video-lock{
+  overflow:hidden!important;
+  overscroll-behavior:none!important;
+  touch-action:none!important;
+}
+body.cfp-v8-video-lock .sound-toggle{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
 .cfp-v8-video-intro{
   position:fixed!important;
-  inset:0!important;
-  left:0!important;
+  z-index:2147483000!important;
   top:0!important;
   right:auto!important;
   bottom:auto!important;
+  left:0!important;
   width:100vw!important;
   height:100vh!important;
   height:100dvh!important;
+  min-width:0!important;
+  min-height:100vh!important;
   max-width:none!important;
   max-height:none!important;
   margin:0!important;
@@ -1878,14 +1895,27 @@ body.cfp-v8-video-lock .sound-toggle{opacity:0!important;pointer-events:none!imp
   transform:none!important;
   overflow:hidden!important;
   background:#010805!important;
+  isolation:isolate!important;
+  contain:layout paint!important;
+  box-sizing:border-box!important;
 }
-.cfp-v8-video-intro video{
+.cfp-v8-video-intro::after{
+  content:"";
   position:absolute!important;
   inset:0!important;
-  left:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:#010805!important;
+}
+.cfp-v8-video-intro::before{z-index:0!important}
+.cfp-v8-video-intro video{
+  position:absolute!important;
+  z-index:2!important;
   top:0!important;
   right:auto!important;
   bottom:auto!important;
+  left:50%!important;
+  display:block!important;
   width:100%!important;
   height:100%!important;
   min-width:0!important;
@@ -1894,67 +1924,121 @@ body.cfp-v8-video-lock .sound-toggle{opacity:0!important;pointer-events:none!imp
   max-height:none!important;
   margin:0!important;
   padding:0!important;
-  transform:none!important;
+  transform:translate3d(-50%,0,0)!important;
   object-fit:contain!important;
   object-position:50% 50%!important;
   background:#010805!important;
+  box-sizing:border-box!important;
+  -webkit-backface-visibility:hidden!important;
+  backface-visibility:hidden!important;
 }
 .cfp-v8-video-skip{
   position:absolute!important;
-  top:max(12px,env(safe-area-inset-top))!important;
-  right:max(24px,calc(env(safe-area-inset-right) + 18px))!important;
+  z-index:8!important;
+  top:max(10px,env(safe-area-inset-top))!important;
+  right:max(14px,calc(env(safe-area-inset-right) + 10px))!important;
   bottom:auto!important;
   left:auto!important;
-  width:118px!important;
+  width:112px!important;
   min-width:0!important;
-  max-width:calc(100% - 48px)!important;
-  min-height:42px!important;
-  padding:0 10px!important;
+  max-width:calc(100% - 28px)!important;
+  min-height:40px!important;
+  padding:0 8px!important;
   margin:0!important;
   box-sizing:border-box!important;
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
   white-space:nowrap!important;
-  overflow:visible!important;
+  overflow:hidden!important;
   text-overflow:clip!important;
   transform:none!important;
-  font-size:.64rem!important;
+  font-size:.60rem!important;
   line-height:1!important;
-  letter-spacing:.055em!important;
+  letter-spacing:.045em!important;
 }
+.cfp-v8-video-status{z-index:7!important}
+
+#cfpV8Replay{
+  position:fixed!important;
+  left:calc(10px + env(safe-area-inset-left))!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  z-index:2147482000!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:calc(100vw - 140px)!important;
+  min-height:48px!important;
+  margin:0!important;
+  padding:0 13px!important;
+  flex:none!important;
+  border:1px solid rgba(255,255,255,.20)!important;
+  border-radius:999px!important;
+  background:rgba(8,29,19,.78)!important;
+  color:#fff!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.24)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+  backdrop-filter:blur(8px)!important;
+  font:800 .69rem/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  letter-spacing:.04em!important;
+  text-transform:none!important;
+  white-space:nowrap!important;
+  cursor:pointer!important;
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:none!important;
+  transition:opacity .22s ease,visibility .22s ease!important;
+}
+body.gate-open #cfpV8Replay,
+body.cfp-v8-video-lock #cfpV8Replay,
+body.keyboard-open #cfpV8Replay{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
 @media (max-width:560px) and (orientation:portrait){
   .cfp-v8-video-intro video{
-    /* Conserva el tamaño actual, pero reparte el recorte por igual a izquierda y derecha. */
+    /* Overscan equilibrado para eliminar barras sin anclar el recorte a la derecha. */
     left:50%!important;
     width:calc(100% + clamp(34px,10.5vw,42px))!important;
-    transform:translateX(-50%)!important;
+    transform:translate3d(-50%,0,0)!important;
   }
   .cfp-v8-video-skip{
-    top:max(10px,env(safe-area-inset-top))!important;
-    right:max(48px,calc(env(safe-area-inset-right) + 42px))!important;
-    width:108px!important;
-    max-width:calc(100% - 96px)!important;
-    min-height:40px!important;
-    padding:0 8px!important;
-    font-size:.59rem!important;
-    letter-spacing:.045em!important;
+    right:max(14px,calc(env(safe-area-inset-right) + 10px))!important;
+    width:112px!important;
+    max-width:calc(100% - 28px)!important;
   }
 }
 @media (max-width:360px) and (orientation:portrait){
   .cfp-v8-video-skip{
-    right:max(44px,calc(env(safe-area-inset-right) + 38px))!important;
-    width:104px!important;
+    right:max(12px,calc(env(safe-area-inset-right) + 8px))!important;
+    width:106px!important;
+    max-width:calc(100% - 24px)!important;
     font-size:.57rem!important;
+  }
+  #cfpV8Replay{
+    min-height:46px!important;
+    padding:0 11px!important;
+    font-size:.64rem!important;
+    max-width:calc(100vw - 128px)!important;
+  }
+  #soundToggle{
+    min-height:46px!important;
+    padding-left:11px!important;
+    padding-right:11px!important;
   }
 }
 @media (orientation:landscape){
   .cfp-v8-video-skip{
-    right:max(24px,calc(env(safe-area-inset-right) + 18px))!important;
+    right:max(16px,calc(env(safe-area-inset-right) + 12px))!important;
+    width:116px!important;
   }
 }
 </style>
-<!-- CFP-V83-FIX-CSS:END -->
+<!-- CFP-V86-MOBILE-CSS:END -->
 </head>
 <body class="gate-open">
   <div class="entry-gate" id="entryGate" role="dialog" aria-modal="true" aria-label="Entrar a la invitación">
@@ -3658,79 +3742,309 @@ body.cfp-v8-video-lock .sound-toggle{opacity:0!important;pointer-events:none!imp
 })();
 </script>
 <!-- CFP-V8V-JS:END -->
-<!-- CFP-V83-FIX-JS:START -->
-<script id="cfpV83MobileFixScript">
+
+
+
+<!-- CFP-V86-MOBILE-JS:START -->
+<script id="cfpV86MobileScript">
 (()=>{
   'use strict';
   const intro=document.getElementById('cfpV8VideoIntro');
   const video=document.getElementById('cfpV8Video');
   const skip=document.getElementById('cfpV8Skip');
+  const start=document.getElementById('cfpV8Start');
+  const replay=document.getElementById('cfpV8Replay');
+  const music=document.getElementById('bgMusic');
+  const soundButton=document.getElementById('soundToggle');
   if(!intro||!video||!skip)return;
 
-  let raf=0;
-  const setImportant=(node,property,value)=>node.style.setProperty(property,value,'important');
+  const root=document.documentElement;
+  const body=document.body;
+  let geometryRaf=0;
+  let ownFade=0;
+  let cinemaAudioGuard=false;
+  let rememberedMusicOn=false;
+  let silenceTimers=[];
+  const setImportant=(node,property,value)=>node&&node.style.setProperty(property,value,'important');
+
+  const positiveNumbers=(values)=>values.filter((value)=>Number.isFinite(value)&&value>0);
+  const viewportWidth=()=>{
+    const vv=window.visualViewport;
+    const values=positiveNumbers([
+      vv&&vv.width,
+      root.clientWidth,
+      window.innerWidth
+    ]);
+    return Math.max(1,Math.round(values.length?Math.min.apply(Math,values):360));
+  };
+  const viewportHeight=()=>{
+    const vv=window.visualViewport;
+    const visual=vv?Math.ceil((vv.height||0)+Math.max(0,vv.offsetTop||0)):0;
+    const documentHeight=Math.ceil(root.clientHeight||0);
+    const values=positiveNumbers([visual,documentHeight]);
+    const fallback=Math.ceil(window.innerHeight||640);
+    return Math.max(1,values.length?Math.max.apply(Math,values):fallback)+2;
+  };
+
+  const dockLayers=()=>{
+    if(intro.parentElement!==body)body.appendChild(intro);
+    if(replay&&replay.parentElement!==body)body.appendChild(replay);
+  };
 
   function applyMobileGeometry(){
-    cancelAnimationFrame(raf);
-    raf=requestAnimationFrame(()=>{
-      /* No usamos visualViewport.offsetLeft: en algunos móviles desplazaba todo el vídeo a la derecha. */
-      const width=Math.round(document.documentElement.clientWidth||window.innerWidth||360);
-      const vv=window.visualViewport;
-      const height=Math.round((vv&&vv.height)||window.innerHeight||document.documentElement.clientHeight||640);
+    cancelAnimationFrame(geometryRaf);
+    geometryRaf=requestAnimationFrame(()=>{
+      dockLayers();
+      const width=viewportWidth();
+      const height=viewportHeight();
       const portraitMobile=width<=560&&height>=width;
-      const extra=portraitMobile?Math.round(Math.min(42,Math.max(34,width*0.105))):0;
-      const buttonInset=portraitMobile?Math.round(Math.min(58,Math.max(48,width*0.145))):24;
+      const extra=portraitMobile?Math.round(Math.min(42,Math.max(34,width*.105))):0;
 
       setImportant(intro,'position','fixed');
       setImportant(intro,'inset','auto');
-      setImportant(intro,'left','0px');
       setImportant(intro,'top','0px');
       setImportant(intro,'right','auto');
       setImportant(intro,'bottom','auto');
+      setImportant(intro,'left','0px');
       setImportant(intro,'width',width+'px');
       setImportant(intro,'height',height+'px');
-      setImportant(intro,'min-height','0');
+      setImportant(intro,'min-width','0');
+      setImportant(intro,'min-height',height+'px');
       setImportant(intro,'max-width','none');
       setImportant(intro,'max-height','none');
+      setImportant(intro,'margin','0');
       setImportant(intro,'transform','none');
+      setImportant(intro,'z-index','2147483000');
 
       setImportant(video,'position','absolute');
       setImportant(video,'inset','auto');
-      setImportant(video,'left',portraitMobile?'50%':'0px');
       setImportant(video,'top','0px');
       setImportant(video,'right','auto');
       setImportant(video,'bottom','auto');
+      setImportant(video,'left','50%');
       setImportant(video,'width',portraitMobile?'calc(100% + '+extra+'px)':'100%');
       setImportant(video,'height','100%');
       setImportant(video,'object-fit','contain');
       setImportant(video,'object-position','50% 50%');
-      setImportant(video,'transform',portraitMobile?'translateX(-50%)':'none');
+      setImportant(video,'transform','translate3d(-50%,0,0)');
 
       setImportant(skip,'position','absolute');
       setImportant(skip,'left','auto');
-      setImportant(skip,'right',buttonInset+'px');
+      setImportant(skip,'right',width<=360?'max(12px,calc(env(safe-area-inset-right) + 8px))':'max(14px,calc(env(safe-area-inset-right) + 10px))');
       setImportant(skip,'top','max(10px,env(safe-area-inset-top))');
       setImportant(skip,'bottom','auto');
-      setImportant(skip,'width',portraitMobile?(width<=360?'104px':'108px'):'118px');
-      setImportant(skip,'max-width','calc(100% - '+(buttonInset*2)+'px)');
+      setImportant(skip,'width',portraitMobile?(width<=360?'106px':'112px'):'116px');
+      setImportant(skip,'max-width',width<=360?'calc(100% - 24px)':'calc(100% - 28px)');
       setImportant(skip,'transform','none');
 
-      intro.dataset.cfpMobileFix='8.3';
+      intro.dataset.cfpMobileFix='8.6';
+      intro.dataset.cfpViewportWidth=String(width);
     });
   }
 
+  const isCinemaActive=()=>body.classList.contains('cfp-v8-video-lock')||intro.classList.contains('is-active');
+  function syncPageLock(){
+    const active=isCinemaActive();
+    root.classList.toggle('cfp-v8-cinema-open',active);
+    if(active){
+      applyMobileGeometry();
+      requestAnimationFrame(applyMobileGeometry);
+      setTimeout(applyMobileGeometry,80);
+      setTimeout(applyMobileGeometry,320);
+    }
+    if(!active&&cinemaAudioGuard)passiveReleaseCinemaAudio();
+  }
+
+  const targetVolume=()=>{
+    try{return typeof MUSIC_VOLUME!=='undefined'?MUSIC_VOLUME:.34}catch(_){return .34}
+  };
+  const clearAllFades=()=>{
+    try{
+      if(typeof volumeTimer!=='undefined'&&volumeTimer){clearInterval(volumeTimer);volumeTimer=null;}
+    }catch(_){}
+    if(ownFade){clearInterval(ownFade);ownFade=0;}
+  };
+  const legacySoundEnabled=()=>{
+    try{return typeof soundOn!=='undefined'?!!soundOn:false}catch(_){return false}
+  };
+  const setLegacyState=(on)=>{
+    try{if(typeof soundOn!=='undefined')soundOn=!!on}catch(_){}
+  };
+  const actualMusicEnabled=()=>!!(music&&(!music.paused||legacySoundEnabled())&&!music.muted&&(music.volume>.001||legacySoundEnabled()));
+  const rememberMusicPreference=()=>{
+    rememberedMusicOn=actualMusicEnabled()||!!(soundButton&&soundButton.getAttribute('aria-pressed')==='true');
+    setLegacyState(rememberedMusicOn);
+  };
+  const forceCinemaSilence=()=>{
+    if(!music)return;
+    cinemaAudioGuard=true;
+    clearAllFades();
+    try{music.volume=0}catch(_){}
+    try{music.muted=true}catch(_){}
+  };
+  const clearSilenceTimers=()=>{
+    for(const timer of silenceTimers)clearTimeout(timer);
+    silenceTimers=[];
+  };
+  const armCinemaAudio=(remember)=>{
+    if(remember)rememberMusicPreference();
+    clearSilenceTimers();
+    queueMicrotask(()=>{if(isCinemaActive()&&!intro.classList.contains('is-exiting'))forceCinemaSilence()});
+    for(const delay of [0,60,220]){
+      silenceTimers.push(setTimeout(()=>{
+        if(isCinemaActive()&&!intro.classList.contains('is-exiting'))forceCinemaSilence();
+      },delay));
+    }
+  };
+  const releaseCinemaAudio=()=>{
+    if(!music)return;
+    clearSilenceTimers();
+    cinemaAudioGuard=false;
+    /* No cancelamos aquí el fade que inicia finishCinema; solo liberamos el silencio. */
+    try{music.volume=0}catch(_){}
+    try{music.muted=false}catch(_){}
+  };
+  const passiveReleaseCinemaAudio=()=>{
+    if(!music)return;
+    clearSilenceTimers();
+    cinemaAudioGuard=false;
+    try{music.muted=false}catch(_){}
+  };
+  const prepareFinish=()=>{
+    releaseCinemaAudio();
+    requestAnimationFrame(applyMobileGeometry);
+  };
+
+  const prepareCinema=()=>{
+    dockLayers();
+    applyMobileGeometry();
+    requestAnimationFrame(applyMobileGeometry);
+    setTimeout(applyMobileGeometry,60);
+    setTimeout(applyMobileGeometry,240);
+  };
+
+  dockLayers();
   applyMobileGeometry();
   requestAnimationFrame(applyMobileGeometry);
-  setTimeout(applyMobileGeometry,80);
-  setTimeout(applyMobileGeometry,350);
-  setTimeout(applyMobileGeometry,900);
+  setTimeout(applyMobileGeometry,100);
+  setTimeout(applyMobileGeometry,500);
   window.addEventListener('resize',applyMobileGeometry,{passive:true});
   window.addEventListener('orientationchange',()=>setTimeout(applyMobileGeometry,140),{passive:true});
   if(window.visualViewport){
     window.visualViewport.addEventListener('resize',applyMobileGeometry,{passive:true});
+    window.visualViewport.addEventListener('scroll',applyMobileGeometry,{passive:true});
+  }
+
+  new MutationObserver(syncPageLock).observe(body,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(()=>{
+    if(intro.classList.contains('is-exiting')&&cinemaAudioGuard)passiveReleaseCinemaAudio();
+    syncPageLock();
+  }).observe(intro,{attributes:true,attributeFilter:['class']});
+  syncPageLock();
+
+  if(start){
+    start.addEventListener('click',()=>{
+      prepareCinema();
+      armCinemaAudio(false);
+    },true);
+  }
+  if(replay){
+    replay.addEventListener('click',()=>{
+      prepareCinema();
+      armCinemaAudio(true);
+    },true);
+  }
+  skip.addEventListener('click',prepareFinish,true);
+  video.addEventListener('play',()=>{prepareCinema();forceCinemaSilence();},true);
+  video.addEventListener('playing',()=>{prepareCinema();forceCinemaSilence();},true);
+  video.addEventListener('waiting',forceCinemaSilence,true);
+  video.addEventListener('ended',prepareFinish,true);
+  video.addEventListener('error',prepareFinish,true);
+  window.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&isCinemaActive())prepareFinish();},true);
+
+  if(music){
+    music.addEventListener('volumechange',()=>{
+      if(cinemaAudioGuard&&(music.volume!==0||!music.muted)){
+        try{music.volume=0}catch(_){}
+        try{music.muted=true}catch(_){}
+      }
+    });
+  }
+
+  if(music&&soundButton){
+    let desiredOn=!music.paused&&!music.muted;
+
+    const renderSoundButton=(on)=>{
+      desiredOn=!!on;
+      if(!cinemaAudioGuard)setLegacyState(desiredOn);
+      soundButton.textContent=desiredOn?'🔊 Música':'🔇 Música';
+      soundButton.setAttribute('aria-pressed',String(desiredOn));
+      soundButton.setAttribute('aria-label',desiredOn?'Silenciar música de fondo':'Activar música de fondo');
+      soundButton.title=desiredOn?'Silenciar música':'Activar música';
+      soundButton.dataset.musicState=desiredOn?'on':'off';
+    };
+    const fadeTo=(target,duration)=>{
+      clearAllFades();
+      const from=Number.isFinite(music.volume)?music.volume:0;
+      const steps=20;
+      let step=0;
+      ownFade=setInterval(()=>{
+        if(cinemaAudioGuard){music.volume=0;return;}
+        step+=1;
+        const t=step/steps;
+        music.volume=Math.max(0,Math.min(1,from+(target-from)*t));
+        if(step>=steps){clearInterval(ownFade);ownFade=0;music.volume=target;}
+      },Math.max(20,(duration||850)/steps));
+    };
+    const turnOff=()=>{
+      clearAllFades();
+      desiredOn=false;
+      try{music.pause()}catch(_){}
+      music.muted=false;
+      music.volume=targetVolume();
+      renderSoundButton(false);
+    };
+    const turnOn=async()=>{
+      clearAllFades();
+      desiredOn=true;
+      music.muted=false;
+      music.volume=0;
+      renderSoundButton(true);
+      try{
+        await music.play();
+        renderSoundButton(true);
+        fadeTo(targetVolume(),900);
+      }catch(error){
+        desiredOn=false;
+        renderSoundButton(false);
+        console.warn('El navegador bloqueó la música:',error);
+      }
+    };
+
+    soundButton.addEventListener('click',(event)=>{
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const actuallyPlaying=!music.paused&&!music.muted;
+      if(desiredOn||actuallyPlaying)turnOff();
+      else void turnOn();
+    },true);
+
+    music.addEventListener('play',()=>{if(!cinemaAudioGuard)renderSoundButton(true)});
+    music.addEventListener('playing',()=>{if(!cinemaAudioGuard)renderSoundButton(true)});
+    music.addEventListener('pause',()=>{if(!cinemaAudioGuard)renderSoundButton(false)});
+    music.addEventListener('emptied',()=>{if(!cinemaAudioGuard)renderSoundButton(false)});
+
+    const syncFromMedia=()=>{
+      if(cinemaAudioGuard)return;
+      renderSoundButton(!music.paused&&!music.muted);
+    };
+    setTimeout(syncFromMedia,0);
+    setTimeout(syncFromMedia,700);
+    setTimeout(syncFromMedia,1800);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(syncFromMedia,60)});
   }
 })();
 </script>
-<!-- CFP-V83-FIX-JS:END -->
+<!-- CFP-V86-MOBILE-JS:END -->
 </body>
 </html>
