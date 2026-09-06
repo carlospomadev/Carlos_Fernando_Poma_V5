@@ -729,7 +729,6 @@
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <link rel="canonical" href="https://carlospomadev.github.io/Carlos_Fernando_Poma_V5/">
-<meta name="cinematic-intro-version" content="6.20">
 <!-- CFP-V620-CSS:START -->
 <style id="cfpV65CinematicStyles">
 :root{
@@ -1837,6 +1836,125 @@ body.cfp-v621-intro-lock {
 </style>
 <!-- CFP-CALENDAR-V2-CENTER-FIX:END -->
 
+<meta name="cinematic-intro-version" content="8.0-video">
+<!-- CFP-V8V-CSS:START -->
+<style id="cfpV8VideoStyles">
+body.cfp-v8-video-lock{overflow:hidden!important;overscroll-behavior:none!important;touch-action:none}
+body.cfp-v8-video-lock .sound-toggle{opacity:0!important;pointer-events:none!important}
+.cfp-v8-video-intro{position:fixed;inset:0;z-index:20000;width:100%;height:100vh;height:100dvh;min-height:100svh;overflow:hidden;background:#010805;color:#fff;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .42s ease,visibility 0s linear .42s;isolation:isolate}
+.cfp-v8-video-intro::before{content:"";position:absolute;inset:-32px;z-index:0;background:linear-gradient(rgba(1,8,5,.45),rgba(1,8,5,.72)),url('cinematica-poster.jpg') center/cover no-repeat;filter:blur(18px) saturate(.9);transform:scale(1.08);opacity:.72}
+.cfp-v8-video-intro.is-active{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .18s ease,visibility 0s}
+.cfp-v8-video-intro.is-exiting{opacity:0;pointer-events:none;transition:opacity .62s ease}
+.cfp-v8-video-intro video{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.cfp-v8-video-skip{position:absolute;z-index:8;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));min-height:44px;padding:0 15px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(2,15,10,.70);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:800 .72rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+.cfp-v8-video-skip.show{opacity:1;transform:none;pointer-events:auto}
+.cfp-v8-video-status{position:absolute;z-index:7;left:50%;bottom:max(24px,calc(env(safe-area-inset-bottom) + 18px));transform:translateX(-50%);max-width:82%;padding:9px 13px;border-radius:999px;background:rgba(2,15,10,.64);color:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);font:700 .72rem/1.25 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.04em;text-align:center;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.cfp-v8-video-status.show{opacity:1}
+.cfp-v8-start-note{display:block;margin-top:.85rem;color:rgba(255,255,255,.72);font:600 .72rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.05em}
+.cfp-v8-start-button{width:min(100%,360px)}
+.cfp-v8-replay{appearance:none;-webkit-appearance:none}
+@media(max-width:560px){.cfp-v8-video-skip{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));min-height:42px;padding:0 12px;font-size:.66rem}}
+@media(min-aspect-ratio:3/2){.cfp-v8-video-intro video{max-width:min(56.25vh,100vw);left:50%;right:auto;transform:translateX(-50%)}}
+</style>
+<!-- CFP-V8V-CSS:END -->
+<meta name="cinematic-mobile-fix-version" content="8.3-left">
+<!-- CFP-V83-FIX-CSS:START -->
+<style id="cfpV83MobileFixStyles">
+/* V8.3: corrige el desplazamiento horizontal observado en móviles reales. */
+.cfp-v8-video-intro{
+  position:fixed!important;
+  inset:0!important;
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  overflow:hidden!important;
+  background:#010805!important;
+}
+.cfp-v8-video-intro video{
+  position:absolute!important;
+  inset:0!important;
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  transform:none!important;
+  object-fit:contain!important;
+  object-position:50% 50%!important;
+  background:#010805!important;
+}
+.cfp-v8-video-skip{
+  position:absolute!important;
+  top:max(12px,env(safe-area-inset-top))!important;
+  right:max(24px,calc(env(safe-area-inset-right) + 18px))!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:118px!important;
+  min-width:0!important;
+  max-width:calc(100% - 48px)!important;
+  min-height:42px!important;
+  padding:0 10px!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  transform:none!important;
+  font-size:.64rem!important;
+  line-height:1!important;
+  letter-spacing:.055em!important;
+}
+@media (max-width:560px) and (orientation:portrait){
+  .cfp-v8-video-intro video{
+    /* Conserva el tamaño actual, pero reparte el recorte por igual a izquierda y derecha. */
+    left:50%!important;
+    width:calc(100% + clamp(34px,10.5vw,42px))!important;
+    transform:translateX(-50%)!important;
+  }
+  .cfp-v8-video-skip{
+    top:max(10px,env(safe-area-inset-top))!important;
+    right:max(48px,calc(env(safe-area-inset-right) + 42px))!important;
+    width:108px!important;
+    max-width:calc(100% - 96px)!important;
+    min-height:40px!important;
+    padding:0 8px!important;
+    font-size:.59rem!important;
+    letter-spacing:.045em!important;
+  }
+}
+@media (max-width:360px) and (orientation:portrait){
+  .cfp-v8-video-skip{
+    right:max(44px,calc(env(safe-area-inset-right) + 38px))!important;
+    width:104px!important;
+    font-size:.57rem!important;
+  }
+}
+@media (orientation:landscape){
+  .cfp-v8-video-skip{
+    right:max(24px,calc(env(safe-area-inset-right) + 18px))!important;
+  }
+}
+</style>
+<!-- CFP-V83-FIX-CSS:END -->
 </head>
 <body class="gate-open">
   <div class="entry-gate" id="entryGate" role="dialog" aria-modal="true" aria-label="Entrar a la invitación">
@@ -3371,5 +3489,248 @@ body.cfp-v621-intro-lock {
 </script>
 <!-- CFP-CALENDAR-V1-JS:END -->
 
+
+
+
+
+<!-- CFP-V8V-HTML:START -->
+<div class="cfp-v8-video-intro" id="cfpV8VideoIntro" aria-hidden="true" aria-label="Cinemática de Expedición Jurásica">
+  <video id="cfpV8Video" preload="auto" playsinline webkit-playsinline poster="cinematica-poster.jpg">
+    <source src="expedicion-jurasica.mp4" type="video/mp4">
+  </video>
+  <button class="cfp-v8-video-skip" id="cfpV8Skip" type="button" aria-label="Saltar cinemática">Saltar intro</button>
+  <div class="cfp-v8-video-status" id="cfpV8Status" role="status" aria-live="polite">Cargando expedición…</div>
+</div>
+<!-- CFP-V8V-HTML:END -->
+<!-- CFP-V8V-JS:START -->
+<script id="cfpV8VideoScript">
+(()=>{
+  'use strict';
+  const intro=document.getElementById('cfpV8VideoIntro');
+  const video=document.getElementById('cfpV8Video');
+  const skip=document.getElementById('cfpV8Skip');
+  const status=document.getElementById('cfpV8Status');
+  const gate=document.getElementById('entryGate');
+  const gateCard=gate&&gate.querySelector('.gate-card');
+  const music=document.getElementById('bgMusic');
+  const soundBtn=document.getElementById('soundToggle');
+  if(!intro||!video||!gate){return;}
+
+  let running=false;
+  let initialRun=true;
+  let resumeMusicAfter=true;
+  let storedScrollY=0;
+  let skipTimer=0;
+  let exitTimer=0;
+
+  const musicTarget=()=>{try{return typeof MUSIC_VOLUME!=='undefined'?MUSIC_VOLUME:.34}catch(_){return .34}};
+  const setSoundState=(on)=>{
+    try{if(typeof soundOn!=='undefined')soundOn=on}catch(_){}
+    try{if(typeof updateSoundButton==='function'){updateSoundButton();return}}catch(_){}
+    if(soundBtn){soundBtn.textContent=on?'🔊 Música':'🔇 Música';soundBtn.setAttribute('aria-pressed',String(on));}
+  };
+  const fadeMusic=(target,duration=1000)=>{
+    try{if(typeof fadeVolume==='function'){fadeVolume(target,duration);return}}catch(_){}
+    if(!music)return;
+    const start=music.volume,steps=20;let n=0;
+    const id=setInterval(()=>{n++;const t=n/steps;music.volume=Math.max(0,Math.min(1,start+(target-start)*t));if(n>=steps)clearInterval(id)},Math.max(20,duration/steps));
+  };
+  const showStatus=(text)=>{status.textContent=text;status.classList.add('show')};
+  const hideStatus=()=>status.classList.remove('show');
+  const hideGate=()=>{gate.classList.add('hidden');};
+  const removeGate=()=>{try{gate.remove()}catch(_){}};
+
+  if(gateCard){
+    gateCard.innerHTML=`
+      <div class="tiny">🦖 Expedición Jurásica</div>
+      <h2>Una aventura está por comenzar</h2>
+      <p>Prepárate para entrar en la expedición de Carlos Fernando.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary cfp-v8-start-button" type="button" id="cfpV8Start">▶ Iniciar expedición</button>
+      </div>
+      <span class="cfp-v8-start-note">🔊 Recomendado con sonido</span>`;
+  }
+
+  const startButton=document.getElementById('cfpV8Start');
+
+  function primeMusicSilently(){
+    if(!music)return;
+    try{music.currentTime=0}catch(_){}
+    music.volume=0;
+    let p;
+    try{p=music.play()}catch(_){}
+    if(p&&typeof p.catch==='function')p.catch(()=>setSoundState(false));
+    setSoundState(true);
+  }
+
+  function finishCinema(){
+    if(!running)return;
+    running=false;
+    clearTimeout(skipTimer);
+    skip.classList.remove('show');
+    try{video.pause()}catch(_){}
+
+    if(resumeMusicAfter&&music){
+      try{music.currentTime=0}catch(_){}
+      music.volume=0;
+      let p;
+      try{if(music.paused)p=music.play()}catch(_){}
+      if(p&&typeof p.catch==='function')p.catch(()=>setSoundState(false));
+      setSoundState(true);
+      fadeMusic(musicTarget(),1150);
+    }else if(music){
+      try{music.pause()}catch(_){}
+      music.volume=musicTarget();
+      setSoundState(false);
+    }
+
+    intro.classList.add('is-exiting');
+    clearTimeout(exitTimer);
+    exitTimer=setTimeout(()=>{
+      intro.classList.remove('is-active','is-exiting');
+      intro.setAttribute('aria-hidden','true');
+      document.body.classList.remove('cfp-v8-video-lock','gate-open');
+      if(initialRun){removeGate();window.scrollTo(0,0);initialRun=false;}
+      else{window.scrollTo(0,storedScrollY);}
+    },640);
+  }
+
+  function startCinema({initial=false,resumeMusic=true}={}){
+    if(running)return;
+    running=true;
+    resumeMusicAfter=!!resumeMusic;
+    storedScrollY=window.scrollY||0;
+    document.body.classList.add('cfp-v8-video-lock');
+    if(initial)hideGate();
+    intro.classList.remove('is-exiting');
+    intro.classList.add('is-active');
+    intro.setAttribute('aria-hidden','false');
+    showStatus('Cargando expedición…');
+    skip.classList.remove('show');
+    clearTimeout(skipTimer);
+    skipTimer=setTimeout(()=>skip.classList.add('show'),1200);
+
+    try{video.currentTime=0}catch(_){}
+    video.muted=false;
+    video.volume=1;
+
+    // Las dos reproducciones se solicitan dentro del mismo gesto del usuario.
+    // La música de la página queda a volumen 0 mientras suena la cinemática.
+    let videoPromise;
+    try{videoPromise=video.play()}catch(_){}
+    if(resumeMusicAfter){primeMusicSilently()}
+
+    if(videoPromise&&typeof videoPromise.catch==='function'){
+      videoPromise.catch(()=>{
+        showStatus('No se pudo reproducir el vídeo. Entrando a la invitación…');
+        setTimeout(finishCinema,700);
+      });
+    }
+  }
+
+  if(startButton){
+    startButton.addEventListener('click',()=>startCinema({initial:true,resumeMusic:true}));
+  }
+  skip.addEventListener('click',finishCinema);
+  video.addEventListener('playing',hideStatus);
+  video.addEventListener('waiting',()=>showStatus('Cargando expedición…'));
+  video.addEventListener('canplay',hideStatus);
+  video.addEventListener('ended',finishCinema);
+  video.addEventListener('error',()=>{showStatus('No se pudo cargar el vídeo. Entrando a la invitación…');setTimeout(finishCinema,700)});
+
+  const heroActions=document.querySelector('.hero .cta-row');
+  if(heroActions&&!document.getElementById('cfpV8Replay')){
+    const replay=document.createElement('button');
+    replay.type='button';
+    replay.id='cfpV8Replay';
+    replay.className='btn btn-secondary cfp-v8-replay';
+    replay.textContent='↻ Ver expedición';
+    replay.addEventListener('click',()=>{
+      let shouldResume=false;
+      try{shouldResume=typeof soundOn!=='undefined'?!!soundOn:!!(music&&!music.paused&&music.volume>0.01)}catch(_){shouldResume=!!(music&&!music.paused&&music.volume>0.01)}
+      if(music&&shouldResume){music.volume=0;setSoundState(true)}
+      startCinema({initial:false,resumeMusic:shouldResume});
+    });
+    heroActions.appendChild(replay);
+  }
+
+  window.addEventListener('keydown',event=>{if(event.key==='Escape'&&running)finishCinema()});
+})();
+</script>
+<!-- CFP-V8V-JS:END -->
+<!-- CFP-V83-FIX-JS:START -->
+<script id="cfpV83MobileFixScript">
+(()=>{
+  'use strict';
+  const intro=document.getElementById('cfpV8VideoIntro');
+  const video=document.getElementById('cfpV8Video');
+  const skip=document.getElementById('cfpV8Skip');
+  if(!intro||!video||!skip)return;
+
+  let raf=0;
+  const setImportant=(node,property,value)=>node.style.setProperty(property,value,'important');
+
+  function applyMobileGeometry(){
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      /* No usamos visualViewport.offsetLeft: en algunos móviles desplazaba todo el vídeo a la derecha. */
+      const width=Math.round(document.documentElement.clientWidth||window.innerWidth||360);
+      const vv=window.visualViewport;
+      const height=Math.round((vv&&vv.height)||window.innerHeight||document.documentElement.clientHeight||640);
+      const portraitMobile=width<=560&&height>=width;
+      const extra=portraitMobile?Math.round(Math.min(42,Math.max(34,width*0.105))):0;
+      const buttonInset=portraitMobile?Math.round(Math.min(58,Math.max(48,width*0.145))):24;
+
+      setImportant(intro,'position','fixed');
+      setImportant(intro,'inset','auto');
+      setImportant(intro,'left','0px');
+      setImportant(intro,'top','0px');
+      setImportant(intro,'right','auto');
+      setImportant(intro,'bottom','auto');
+      setImportant(intro,'width',width+'px');
+      setImportant(intro,'height',height+'px');
+      setImportant(intro,'min-height','0');
+      setImportant(intro,'max-width','none');
+      setImportant(intro,'max-height','none');
+      setImportant(intro,'transform','none');
+
+      setImportant(video,'position','absolute');
+      setImportant(video,'inset','auto');
+      setImportant(video,'left',portraitMobile?'50%':'0px');
+      setImportant(video,'top','0px');
+      setImportant(video,'right','auto');
+      setImportant(video,'bottom','auto');
+      setImportant(video,'width',portraitMobile?'calc(100% + '+extra+'px)':'100%');
+      setImportant(video,'height','100%');
+      setImportant(video,'object-fit','contain');
+      setImportant(video,'object-position','50% 50%');
+      setImportant(video,'transform',portraitMobile?'translateX(-50%)':'none');
+
+      setImportant(skip,'position','absolute');
+      setImportant(skip,'left','auto');
+      setImportant(skip,'right',buttonInset+'px');
+      setImportant(skip,'top','max(10px,env(safe-area-inset-top))');
+      setImportant(skip,'bottom','auto');
+      setImportant(skip,'width',portraitMobile?(width<=360?'104px':'108px'):'118px');
+      setImportant(skip,'max-width','calc(100% - '+(buttonInset*2)+'px)');
+      setImportant(skip,'transform','none');
+
+      intro.dataset.cfpMobileFix='8.3';
+    });
+  }
+
+  applyMobileGeometry();
+  requestAnimationFrame(applyMobileGeometry);
+  setTimeout(applyMobileGeometry,80);
+  setTimeout(applyMobileGeometry,350);
+  setTimeout(applyMobileGeometry,900);
+  window.addEventListener('resize',applyMobileGeometry,{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(applyMobileGeometry,140),{passive:true});
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize',applyMobileGeometry,{passive:true});
+  }
+})();
+</script>
+<!-- CFP-V83-FIX-JS:END -->
 </body>
 </html>
