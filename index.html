@@ -521,6 +521,32 @@
       text-transform:uppercase;
     }
 
+    /* Misión del invitado: recordatorio de regalo breve y discreto. */
+    .gift-note {
+      width:fit-content;
+      max-width:min(100%,560px);
+      margin:1.15rem auto 0;
+      padding:9px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      border:1px dashed rgba(81,54,31,.30);
+      border-radius:999px;
+      background:rgba(255,255,255,.32);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.30);
+      color:#5f4d39;
+      font:700 .84rem/1.4 ui-sans-serif,system-ui,sans-serif;
+    }
+    @media(max-width:560px) {
+      .gift-note {
+        width:100%;
+        border-radius:16px;
+        padding:10px 12px;
+        font-size:.8rem;
+      }
+    }
+
     .rsvp {
       text-align:center;
       background:
@@ -2041,13 +2067,67 @@ body.keyboard-open #cfpV8Replay{
 </style>
 <!-- CFP-V86-MOBILE-CSS:END -->
 <style id="cfp-v6-updates">
-.invitation-capacity-v5{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 20px;padding:12px;background:rgba(244,228,189,.08);border:1px solid rgba(232,210,166,.28);border-radius:18px}
-.capacity-item-v5{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid rgba(232,210,166,.18);border-radius:14px;background:rgba(13,39,27,.35)}
-.capacity-icon-v5{font-size:1.35rem;line-height:1}
-.capacity-item-v5 strong{display:block;font-size:.98rem;color:var(--cream)}
-.capacity-item-v5 small{display:block;margin-top:2px;color:rgba(255,248,232,.72);font-size:.76rem;line-height:1.3}
-@media(max-width:560px){.invitation-capacity-v5{grid-template-columns:1fr;gap:8px;margin-top:15px}}
+.invitation-capacity-v5{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0 20px;
+  padding:12px;
+  background:rgba(244,228,189,.08);
+  border:1px solid rgba(232,210,166,.28);
+  border-radius:18px;
+}
+.capacity-item-v5{
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr);
+  align-items:center;
+  column-gap:12px;
+  min-width:0;
+  padding:12px 14px;
+  text-align:left;
+  border:1px solid rgba(232,210,166,.18);
+  border-radius:14px;
+  background:rgba(13,39,27,.35);
+}
+.capacity-icon-v5{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  align-self:center;
+  font-size:1.25rem;
+  line-height:1;
+}
+.capacity-copy-v5{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:left;
+}
+.capacity-copy-v5 strong{
+  display:block;
+  margin:0;
+  font-size:.98rem;
+  line-height:1.15;
+  color:var(--cream);
+}
+.capacity-copy-v5 small{
+  display:block;
+  margin-top:3px;
+  color:rgba(255,248,232,.72);
+  font-size:.76rem;
+  line-height:1.3;
+}
+@media(max-width:560px){
+  .invitation-capacity-v5{grid-template-columns:1fr;gap:8px;margin-top:15px}
+  .capacity-item-v5{grid-template-columns:30px minmax(0,1fr);column-gap:11px;padding:11px 13px}
+  .capacity-icon-v5{width:30px;height:30px;font-size:1.18rem}
+}
 </style>
+  <meta name="gift-note-version" content="11.0-mision-invitado" />
+  <meta name="rsvp-capacity-layout-version" content="10.0-left-aligned" />
 </head>
 <body class="gate-open">
   <div class="entry-gate" id="entryGate" role="dialog" aria-modal="true" aria-label="Entrar a la invitación">
@@ -2143,12 +2223,12 @@ body.keyboard-open #cfpV8Replay{
             <div class="stamp">
               <small>Campamento base</small>
               <strong>DinoPark Ventanilla</strong>
-              <span>Av. Néstor Gambetta, Urb. Pedro Cueva, Ventanilla.</span>
+              <span>Urb. Pedro Cueva, Ventanilla</span>
             </div>
             <div class="stamp">
               <small>Pase de expedición</small>
               <strong>1 adulto + 1 niño</strong>
-              <span>Acceso reservado para dos exploradores por invitación.</span>
+              <span>Acceso para dos exploradores por invitación.</span>
             </div>
           </div>
           
@@ -2181,6 +2261,9 @@ body.keyboard-open #cfpV8Replay{
             <span class="swatch"><i class="dot brown"></i>Marrón</span>
           </div>
           <span class="optional">Opcional · ven como prefieras</span>
+          <div class="gift-note" role="note" aria-label="Misión del invitado sobre el regalo">
+            🎁 Misión del invitado: traer un detalle para el pequeño explorador.
+          </div>
         </div>
       </div>
     </section>
@@ -2191,8 +2274,14 @@ body.keyboard-open #cfpV8Replay{
         <h2>Confirma tu pase de expedición</h2>
         <p>Debido al aforo limitado de DinoPark, esta invitación incluye el ingreso de <strong>1 adulto y 1 niño</strong>. Indícanos si podrán acompañarnos para reservar ambos lugares.</p>
         <div class="invitation-capacity-v5" id="guestFieldsV5" role="note" aria-label="Personas incluidas en esta invitación">
-          <div class="capacity-item-v5"><span class="capacity-icon-v5">👤</span><span><strong>1 adulto</strong><small>Acompañante responsable</small></span></div>
-          <div class="capacity-item-v5"><span class="capacity-icon-v5">🦖</span><span><strong>1 niño</strong><small>Pequeño explorador</small></span></div>
+          <div class="capacity-item-v5">
+            <span class="capacity-icon-v5" aria-hidden="true">👤</span>
+            <span class="capacity-copy-v5"><strong>1 adulto</strong><small>Acompañante responsable</small></span>
+          </div>
+          <div class="capacity-item-v5">
+            <span class="capacity-icon-v5" aria-hidden="true">🦖</span>
+            <span class="capacity-copy-v5"><strong>1 niño</strong><small>Pequeño explorador</small></span>
+          </div>
         </div>
 
         <form class="rsvp-form" id="rsvpForm">
@@ -3484,7 +3573,7 @@ body.keyboard-open #cfpV8Replay{
     title: 'Carlos Fernando cumple 2 🦖',
     startUtc: '20261001T230000Z',
     endUtc: '20261002T020000Z',
-    location: 'DinoPark Ventanilla, Av. Néstor Gambetta, Urb. Pedro Cueva, Ventanilla.',
+    location: 'DinoPark Ventanilla, Urb. Pedro Cueva, Ventanilla',
     map: 'https://www.google.com/maps?cid=3187928463328483251',
     description: 'Expedición jurásica de Carlos Fernando. La aventura comienza a las 6:00 PM.'
   };
